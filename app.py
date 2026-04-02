@@ -19,10 +19,10 @@ st.subheader("Customer Inputs")
 # Dynamically create inputs
 for feature in features:
     
-    # Skip target if present
-    if feature.lower() == "churn":
+     # Skip unwanted columns
+    if feature.lower() in ["churn", "customerid", "customer_id"]:
         continue
-
+        
     # Numeric features
     if any(x in feature.lower() for x in ["tenure", "charges", "spend", "calls", "delay"]):
         input_data[feature] = st.number_input(feature, value=0.0)
