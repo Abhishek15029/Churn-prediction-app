@@ -1,4 +1,4 @@
-
+app_code = '''
 import streamlit as st
 import pandas as pd
 import joblib
@@ -30,3 +30,9 @@ if st.button("Predict"):
         st.error("Will Churn")
     else:
         st.success("Will Stay")
+'''
+
+with open("app.py", "w") as f:
+    f.write(app_code)
+
+print("app.py created successfully")
