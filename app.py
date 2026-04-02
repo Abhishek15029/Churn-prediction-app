@@ -1,38 +1,50 @@
-app_code = '''
 import streamlit as st
 import pandas as pd
 import joblib
 
-model = joblib.load('model.pkl')
+# Load model
+model = joblib.load("model.pkl")
 
-st.title("Customer Churn Prediction")
+st.set_page_config(page_title="Churn Predictor", layout="centered")
+st.title("📊 Customer Churn Prediction")
+st.write("Fill all details to predict churn")
 
-tenure = st.number_input("Tenure", 0, 100)
-monthly = st.number_input("Monthly Charges", 0.0, 1000.0)
-total = st.number_input("Total Charges", 0.0, 100000.0)
+# Get feature names from model
+features = model.feature_names_in_
 
-if st.button("Predict"):
-    input_df = pd.DataFrame([{
-        'tenure': tenure,
-        'MonthlyCharges': monthly,
-        'TotalCharges': total
-    }])
+input_data = {}
 
-    for col in model.feature_names_in_:
-        if col not in input_df.columns:
-            input_df[col] = 0
+st.subheader("Customer Inputs")
 
-    input_df = input_df[model.feature_names_in_]
+# Dynamically create inputs
+for feature in features:
+    
+    # Skip target if present
+    if feature.lower() == "churn":
+        continue
 
-    pred = model.predict(input_df)[0]
-
-    if pred == 1:
-        st.error("Will Churn")
+    # Numeric features
+    if any(x in feature.lower() for x in ["tenure", "charges", "spend", "calls", "delay"]):
+        input_data[feature] = st.number_input(feature, value=0.0)
+    
+    # One-hot encoded features
     else:
-        st.success("Will Stay")
-'''
+        input_data[feature] = st.selectbox(feature, [0, 1])
 
-with open("app.py", "w") as f:
-    f.write(app_code)
+# Predict button
+if st.button("Predict"):
+    
+    input_df = pd.DataFrame([input_data])
 
-print("app.py created successfully")
+    # Ensure correct order
+    input_df = input_df[features]
+
+    prediction = model.predict(input_df)[0]
+    prob = model.predict_proba(input_df)[0][1]
+
+    st.subheader("Result")
+
+    if prediction == 1:
+        st.error(f"⚠️ High Risk of Churn (Probability: {prob:.2f})")
+    else:
+        st.success(f"✅ Customer Will Stay (Churn Probability: {prob:.2f})")
