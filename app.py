@@ -56,8 +56,14 @@ if st.button("Predict"):
 
     input_df = pd.DataFrame([input_dict])
 
-    # Ensure correct order
-    input_df = input_df[model.feature_names_in_]
+    
+    # Add missing columns safely
+for col in model.feature_names_in_:
+    if col not in input_df.columns:
+        input_df[col] = 0
+
+# Ensure correct order
+input_df = input_df[model.feature_names_in_]
 
     prediction = model.predict(input_df)[0]
     prob = model.predict_proba(input_df)[0][1]
