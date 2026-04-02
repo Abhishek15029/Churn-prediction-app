@@ -1,3 +1,31 @@
+import streamlit as st
+import pandas as pd
+import joblib
+
+# Load model
+model = joblib.load("model.pkl")
+
+st.set_page_config(page_title="Churn Predictor", layout="centered")
+
+st.title("📊 Customer Churn Prediction")
+st.write("Enter customer details below:")
+
+# ---------- INPUTS ---------- #
+
+age = st.slider("Age", 10, 100, 30)
+tenure = st.slider("Tenure", 0, 72, 12)
+usage = st.number_input("Usage Frequency", 0, 100)
+support_calls = st.slider("Support Calls", 0, 10, 1)
+payment_delay = st.slider("Payment Delay", 0, 30, 0)
+total_spend = st.number_input("Total Spend", 0.0, 100000.0)
+last_interaction = st.number_input("Last Interaction (days)", 0, 365)
+
+gender = st.selectbox("Gender", ["Male", "Female"])
+subscription = st.selectbox("Subscription Type", ["Basic", "Standard", "Premium"])
+contract = st.selectbox("Contract Length", ["Monthly", "Quarterly", "Annual"])
+
+# ---------- PREDICT ---------- #
+
 if st.button("Predict"):
 
     input_dict = {
@@ -23,7 +51,7 @@ if st.button("Predict"):
 
     input_df = pd.DataFrame([input_dict])
 
-    # SAFE FIX
+    # Fix missing columns
     for col in model.feature_names_in_:
         if col not in input_df.columns:
             input_df[col] = 0
