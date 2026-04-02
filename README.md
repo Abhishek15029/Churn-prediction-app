@@ -1,5 +1,6 @@
 # 📊 Customer Churn Prediction App
-
+## 🚀 Live Demo
+https://churn-prediction-app-otcwmxnfsee2jedjempsef.streamlit.app/
 ## 🔹 Overview
 
 This project predicts whether a customer is likely to churn (leave) or not using a Machine Learning model.
