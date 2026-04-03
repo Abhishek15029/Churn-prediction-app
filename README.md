@@ -34,8 +34,8 @@ Note: Since churn datasets are often imbalanced, F1-score and class balance were
 ## 🚀 Deployment
 The model is deployed using Streamlit and can take user input to predict churn in real time.
 
-Live App:  
-https://churn-prediction-app-otcwmxnfsee2jedjempsef.streamlit.app/
+Live App:  [
+https://churn-prediction-app-otcwmxnfsee2jedjempsef.streamlit.app/](https://churn-prediction-app-otcwmxnfsee2jedjempsef.streamlit.app/)
 
 ---
 
