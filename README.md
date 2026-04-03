@@ -1,89 +1,77 @@
-# 📊 Customer Churn Prediction App
-## 🚀 Live Demo
+# Customer Churn Prediction App 🚀
+
+This project is an end-to-end Machine Learning application that predicts whether a customer is likely to churn based on telecom data.
+
+---
+
+## 📌 Overview
+The goal of this project is to identify customers who are likely to leave a service using historical data.  
+The trained model is deployed as a web app to allow real-time predictions.
+
+---
+
+## ⚙️ Features
+- Data preprocessing and feature handling  
+- Handling class imbalance using SMOTE  
+- Model training using Random Forest  
+- Evaluation using accuracy, confusion matrix, and F1-score  
+- Deployment using Streamlit  
+
+---
+
+## 🧠 Model Details
+- Model Used: Random Forest Classifier  
+- Accuracy: ~93%  
+- Evaluation Metrics:
+  - Accuracy  
+  - Confusion Matrix  
+  - F1-score  
+
+Note: Since churn datasets are often imbalanced, F1-score and class balance were also considered instead of relying only on accuracy.
+
+---
+
+## 🚀 Deployment
+The model is deployed using Streamlit and can take user input to predict churn in real time.
+
+Live App:  
 https://churn-prediction-app-otcwmxnfsee2jedjempsef.streamlit.app/
-## 🔹 Overview
-
-This project predicts whether a customer is likely to churn (leave) or not using a Machine Learning model.
-An interactive web app is built using Streamlit where users can input customer details and get predictions.
 
 ---
 
-## 🔹 Problem Statement
-
-Customer churn is a major issue for businesses.
-The goal is to identify customers who are likely to leave so that preventive actions can be taken.
-
----
-
-## 🔹 Approach
-
-* Data preprocessing and cleaning
-* Encoding categorical features
-* Handling class imbalance using SMOTE
-* Model training using Random Forest
-* Model optimization for deployment
-* Building UI using Streamlit
+## 🛠️ Tech Stack
+- Python  
+- Pandas, NumPy  
+- Scikit-learn  
+- Imbalanced-learn (SMOTE)  
+- Streamlit  
 
 ---
 
-## 🔹 Model Performance
-
-* Accuracy: **~93%**
-* Balanced precision and recall
-* Improved performance after handling imbalance
-
----
-
-## 🔹 Tech Stack
-
-* Python
-* Pandas, NumPy
-* Scikit-learn
-* Streamlit
+## 📂 Project Structure
+app.py                # Streamlit app  
+model.pkl            # Trained model  
+churn.ipynb          # Training notebook  
+requirements.txt     # Dependencies  
+README.md  
 
 ---
 
-## 🔹 Features
-
-* Predict customer churn (0/1)
-* Displays prediction probability
-* Simple and interactive UI
-
----
-
-## 🔹 How to Run Locally
-
-```bash
-pip install -r requirements.txt
-streamlit run app.py
-```
+## 📈 Learning Outcome
+This project helped me understand:
+- The complete ML pipeline (data → model → deployment)  
+- Importance of consistent preprocessing  
+- Handling imbalanced datasets  
+- Converting models into usable applications  
 
 ---
 
-## 🔹 Live Demo
-
-👉 (Add your Streamlit link here after deployment)
-
----
-
-## 🔹 Project Structure
-
-```
-├── app.py
-├── model.pkl
-├── requirements.txt
-```
+## 🔮 Future Improvements
+- Add feature importance / model interpretability  
+- Improve model performance with tuning  
+- Enhance UI of the app  
 
 ---
 
-## 🔹 Key Learning
-
-* Importance of handling class imbalance (SMOTE)
-* Impact of data distribution on model performance
-* Building and deploying ML models as real applications
-
----
-
-## 🔹 Conclusion
-
-A complete end-to-end Machine Learning project was developed, from data preprocessing to deployment, enabling real-time churn prediction.
+## 🤝 Feedback
+Feel free to explore the project and share feedback!
